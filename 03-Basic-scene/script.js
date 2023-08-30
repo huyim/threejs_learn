@@ -1,9 +1,17 @@
+/*
+- A scene that will contain objects
+- Some objects
+- A camera
+- A render 
+*/
+
 //Scene
 const scene = new THREE.Scene();
 
 //Red cube
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+// Mesh: Combination of a geometry (the shape) and a material (how it looks)
 const cube_mesh = new THREE.Mesh(geometry, material);
 scene.add(cube_mesh);
 
