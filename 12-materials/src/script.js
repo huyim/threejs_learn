@@ -29,6 +29,8 @@ loadingManager.onError = () => {
 };
 
 const textureLoader = new THREE.TextureLoader(loadingManager);
+const cubeTextureLoader = new THREE.CubeTextureLoader(loadingManager);
+
 const doorColorTexture = textureLoader.load("/textures/door/color.jpg");
 const alphaTexture = textureLoader.load("/textures/door/alpha.jpg");
 const heightTexture = textureLoader.load("/textures/door/height.jpg");
@@ -42,6 +44,15 @@ const matcapsTexture = textureLoader.load("/textures/matcaps/3.png");
 const gradientTexture = textureLoader.load("/textures/gradients/3.jpg");
 gradientTexture.minFilter = THREE.NearestFilter;
 gradientTexture.magFilter = THREE.NearestFilter;
+
+const environmentMapTexture = cubeTextureLoader.load([
+  "/textures/environmentMaps/0/px.jpg",
+  "/textures/environmentMaps/0/nx.jpg",
+  "/textures/environmentMaps/0/py.jpg",
+  "/textures/environmentMaps/0/ny.jpg",
+  "/textures/environmentMaps/0/pz.jpg",
+  "/textures/environmentMaps/0/nz.jpg",
+]);
 
 /**
  * Base
@@ -91,16 +102,31 @@ const scene = new THREE.Scene();
 //const material = new THREE.MeshToonMaterial();
 //material.gradientMap = gradientTexture;
 
+// const material = new THREE.MeshStandardMaterial();
+// //material.metalness = 0.45;
+// //material.roughness = 0.65;
+// // UV coordinates: how textures can be applied to geometries
+// material.map = doorColorTexture;
+// //ambient light: 环境光
+// material.aoMap = ambientOcclusionTexture;
+// material.aoMapIntensity = 1;
+// //变得立体
+// material.displacementMap = heightTexture;
+// material.displacementScale = 0.05;
+// //金属感等 注：不与material.metalness同用
+// material.metalnessMap = metalnessTexture;
+// material.roughnessMap = roughnessTexture;
+// //Add more details
+// material.normalMap = normalTexture;
+// material.normalScale.set(0.5, 0.5);
+// // if want to play with opacity、alpha, do not forget material.transparent
+// material.alphaMap = alphaTexture;
+// material.transparent = true;
+
 const material = new THREE.MeshStandardMaterial();
-material.metalness = 0.45;
-material.roughness = 0.65;
-// UV coordinates: how textures can be applied to geometries
-material.map = doorColorTexture;
-material.aoMap = ambientOcclusionTexture;
-material.aoMapIntensity = 1;
-//变得立体
-material.displacementMap = heightTexture;
-material.displacementScale = 0.05;
+material.metalness = 0.7;
+material.roughness = 0.2;
+material.envMap = environmentMapTexture;
 
 gui.add(material, "metalness").min(0).max(1).step(0.0001);
 gui.add(material, "roughness").min(0).max(1).step(0.0001);
