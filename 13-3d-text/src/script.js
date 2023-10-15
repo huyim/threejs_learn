@@ -76,7 +76,6 @@ fontLoader.load("/fonts/PuHuiTi_Regular.json", (font) => {
     -textGeometry.boundingBox.max.z * 0.5
   );
 
-  const textMaterial = new THREE.MeshBasicMaterial();
   const text = new THREE.Mesh(textGeometry, material);
 
   scene.add(text);
