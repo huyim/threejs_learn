@@ -83,6 +83,7 @@ const walls = new THREE.Mesh(
     roughnessMap: bricksRoughnessTexture,
   })
 );
+// NOTE AND WARNING: aoMap在mac上无法正常工：Vertex buffer is not big enough for the draw call
 walls.geometry.setAttribute(
   "uv2",
   new THREE.Float32BufferAttribute(walls.geometry.attributes.uv, 2)
