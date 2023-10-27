@@ -78,7 +78,7 @@ const walls = new THREE.Mesh(
   new THREE.BoxGeometry(4, 3, 4),
   new THREE.MeshStandardMaterial({
     map: bricksColorTexture,
-    aoMap: bricksAmbientOcclusionTexture,
+    // aoMap: bricksAmbientOcclusionTexture,
     normalMap: bricksNormalTexture,
     roughnessMap: bricksRoughnessTexture,
   })
@@ -108,7 +108,7 @@ const door = new THREE.Mesh(
     map: doorColorTexture,
     transparent: true,
     alphaMap: doorAlphaTexture,
-    aoMap: doorAmbientOcclusionTexture,
+    // aoMap: doorAmbientOcclusionTexture,
     displacementMap: doorHeightTexture,
     displacementScale: 0.1,
     normalMap: doorNormalTexture,
@@ -175,7 +175,7 @@ const floor = new THREE.Mesh(
   new THREE.PlaneGeometry(20, 20),
   new THREE.MeshStandardMaterial({
     map: grassColorTexture,
-    aoMap: grassAmbientOcclusionTexture,
+    // aoMap: grassAmbientOcclusionTexture,
     normalMap: grassNormalTexture,
     roughnessMap: grassRoughnessTexture,
   })
